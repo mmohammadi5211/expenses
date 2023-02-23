@@ -11,21 +11,24 @@ import {
 import { useState } from 'react';
 
 interface Props {
-  addCard: (params: { title: string; amount: string }) => void;
+  addCard: (params: { title: string; amount: string; date: Date }) => void;
 }
 const ExpensesForm = (props: Props) => {
   const [titleExpense, setTitleExpense] = useState('');
   const [amountExpense, setAmoutnExpense] = useState('');
+  const [enteredDate, setEnteredDate] = useState('');
 
   const formHandler = (e: any) => {
     // e.preventDefault();
     const value = {
       title: titleExpense,
       amount: amountExpense,
+      date: new Date(enteredDate),
     };
     props.addCard(value);
     setTitleExpense('');
     setAmoutnExpense('');
+    setEnteredDate('');
   };
   return (
     <>
@@ -50,7 +53,10 @@ const ExpensesForm = (props: Props) => {
               value={amountExpense}
               onChange={(e) => setAmoutnExpense(e.target.value)}
             />
-            <input type='date' />
+            <input
+              type='date'
+              onChange={(e) => setEnteredDate(e.target.value)}
+            />
           </Stack>
           <Stack
             sx={{ mt: '10px', justifyContent: 'center', alignItems: 'center' }}>

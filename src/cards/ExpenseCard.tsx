@@ -45,7 +45,7 @@ const ExpenseCard = (props: Props) => {
             <Stack
               direction={'row'}
               spacing={1}>
-              <DateCard />
+              <DateCard date={props.cardInfo.date} />
               <Typography>{props.cardInfo.title}</Typography>
             </Stack>
             <Typography>{props.cardInfo.amount}</Typography>

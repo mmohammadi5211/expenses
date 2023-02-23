@@ -5,11 +5,12 @@ import { useState } from 'react';
 import { type } from 'os';
 
 interface Props {}
-type Values = { title: string; amount: string };
+type Values = { title: string; amount: string; date: Date };
 export type CardType = {
   id: number;
   title: string;
   amount: string;
+  date: Date;
 };
 
 let nextId = 3;
@@ -22,6 +23,7 @@ const ExpensesSection = (props: Props) => {
         id: nextId++,
         title: values.title,
         amount: values.amount,
+        date: values.date,
       },
     ]);
   };

@@ -1,6 +1,12 @@
 import { Box, Stack, Typography } from '@mui/material';
 
-const DateCard = () => {
+interface Props {
+  date: Date;
+}
+const DateCard = (props: Props) => {
+  const month = props.date.toLocaleString('en-US', { month: 'long' });
+  const day = props.date.toLocaleString('en-US', { day: '2-digit' });
+  const year = props.date.getFullYear();
   return (
     <Box
       sx={{
@@ -11,9 +17,9 @@ const DateCard = () => {
         backgroundColor: 'black',
       }}>
       <Stack>
-        <Typography>Months</Typography>
-        <Typography>Year</Typography>
-        <Typography>Days</Typography>
+        <Typography>{month}</Typography>
+        <Typography>{year}</Typography>
+        <Typography>{day}</Typography>
       </Stack>
     </Box>
   );
